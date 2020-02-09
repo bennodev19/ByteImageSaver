@@ -1,0 +1,122 @@
+//==================================================================================================================
+//Usage
+//==================================================================================================================
+1) Drag the folder(package) called "image" in your project ^^
+2) Import the Class "ImageExport"
+3) HaveFun
+
+//==================================================================================================================
+//Information
+//==================================================================================================================
+If you want to save objects make your Object-Class Serializable
+
+   import java.io.Serializable;
+   public class YourClass implements Serializable
+
+//==================================================================================================================
+//Example
+//==================================================================================================================
+           //==================================================================================================================
+           //Object Export
+           //==================================================================================================================
+           public static void ObjectExport()
+           {
+
+               String path = "image.png";
+               ImageExport imageExport = new ImageExport(true);
+
+               //DummyData
+               ArrayList<HighscoreElement> highscoreElements = new ArrayList<>();
+               for (int i = 0; i < 100; i++)
+               {
+                   highscoreElements.add(new HighscoreElement("Dieter", 10));
+                   highscoreElements.add(new HighscoreElement("Hans", 4));
+                   highscoreElements.add(new HighscoreElement("Frank", 13));
+                   highscoreElements.add(new HighscoreElement("Benno", 16));
+                   highscoreElements.add(new HighscoreElement("Günter", 7));
+               }
+
+               //Cast HighscoreElement to Object
+               ArrayList<Object> highscoreElementObjects = new ArrayList<>();
+               for (HighscoreElement highscoreElement : highscoreElements)
+               {
+                   highscoreElementObjects.add(highscoreElement);
+               }
+
+               //Export Object
+               imageExport.exportObject(highscoreElementObjects, path);
+
+               //Import Object
+               ArrayList<Object> newHighscoreElementObjects = imageExport.importObject(path);
+
+               //Cast Object to HighscoreElement
+               ArrayList<HighscoreElement> newHighscoreElements = new ArrayList<>();
+               for (Object newHighscoreElementObject : newHighscoreElementObjects)
+               {
+                   newHighscoreElements.add((HighscoreElement) newHighscoreElementObject);
+               }
+
+               //Output HighscoreElements
+               System.out.println("HighScoreElements: " + newHighscoreElements);
+           }
+
+           //==================================================================================================================
+           //String Export
+           //==================================================================================================================
+           public static void StringExport()
+           {
+               String path = "image.png";
+               ImageExport imageExport = new ImageExport(true);
+
+               //String Test
+               String string = "Hello guy,\n" +
+                       "This is a example Text, \n" +
+                       "which will be saved in a image.\n" +
+                       "\n" +
+                       "I don't know what do write anymore.\n" +
+                       "\n" +
+                       "Byte";
+
+               //Export String
+               imageExport.exportString(string, path);
+
+               //Import String
+               String newValue = imageExport.importString(path);
+
+               //Output String
+               System.out.println("String: " + newValue);
+           }
+
+           //==================================================================================================================
+           //File Export
+           //==================================================================================================================
+           public static void FileExport()
+           {
+               String path = "image.png";
+               ImageExport imageExport = new ImageExport(true);
+
+               imageExport.exportFile("Text.txt", path);
+
+               imageExport.importFile("NewText.txt", path);
+           }
+
+//==================================================================================================================
+//Errors
+//==================================================================================================================
+1) java.io.NotSerializableException: YourClass
+   Make your sure that YourClass is Serializeable!
+
+      import java.io.Serializable;
+      public class YourClass implements Serializable
+
+
+2)
+
+//==================================================================================================================
+//Creator
+//==================================================================================================================
+Made By ConfusingGames
+
+
+
+
