@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>gitlab.com/BennoDev</groupId>
+    <groupId>com.gitlab.bennodev</groupId>
     <artifactId>byteimagesaver</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <distributionManagement>
         <snapshotRepository>
@@ -18,6 +18,14 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <!--Important Links-->
+    <!--https://www.youtube.com/watch?v=bxP9IuJbcDQ-->
+    <!--https://central.sonatype.org/pages/apache-maven.html-->
+
+    <!--Note-->
+    <!--For exporting this Project with Java 13.0.1 use this command "mvn clean deploy -Dmaven.javadoc.skip=true verify"-->
+    <!--For setting the version"mvn versions:set -DnewVersion=1.0.0"-->
 
     <build>
         <plugins>
@@ -36,9 +44,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>13</source> <!-- 1.8,1.9,1.10,11,12,13 -->
+                    <target>13</target>
                 </configuration>
             </plugin>
 
@@ -55,6 +64,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -73,57 +83,48 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+                <!--<configuration>
+              <skip>true</skip>
+                  </configuration>-->
+            <executions>
+                <execution>
+                    <id>sign-artifacts</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>sign</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
+    </plugins>
+</build>
+<packaging>jar</packaging>
 
-        </plugins>
-    </build>
-    <packaging>jar</packaging>
+<name>ByteImageSaver</name>
+<description>This Libary can save Files/Strings/Objects in Images.</description>
+<url>https://gitlab.com/BennoDev/byteimagesaver</url>
 
-    <name>ByteImageSaver</name>
-    <description>This Libary can save Files/Strings/Objects in Images.</description>
+<licenses>
+    <license>
+        <name>MIT License</name>
+        <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+</licenses>
+
+<developers>
+    <developer>
+        <name>Benno Kohrs</name>
+        <email>bennodev19@gmail.com</email>
+        <organization>ConfusingGames</organization>
+        <organizationUrl>https://confusinggames.netlify.com/</organizationUrl>
+    </developer>
+</developers>
+
+<scm>
+    <connection>scm:git:git://gitlab.com/BennoDev/byteimagesaver.git</connection>
+    <developerConnection>scm:git:ssh://gitlab.com/BennoDev/byteimagesaver.git</developerConnection>
     <url>https://gitlab.com/BennoDev/byteimagesaver</url>
-
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <name>Benno Kohrs</name>
-            <email>bennodev19@gmail.com</email>
-            <organization>ConfusingGames</organization>
-            <organizationUrl>https://confusinggames.netlify.com/</organizationUrl>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>scm:git:git://gitlab.com/BennoDev/byteimagesaver.git</connection>
-        <developerConnection>scm:git:ssh://gitlab.com/BennoDev/byteimagesaver.git</developerConnection>
-        <url>https://gitlab.com/BennoDev/byteimagesaver</url>
-    </scm>
+</scm>
 
 </project>
