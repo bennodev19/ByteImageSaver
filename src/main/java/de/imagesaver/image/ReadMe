@@ -1,9 +1,7 @@
 //==================================================================================================================
 //Usage
 //==================================================================================================================
-1) Drag the folder(package) called "image" in your project ^^
-2) Import the Class "ImageExport"
-3) HaveFun
+ImageExport imageExport = new ImageExport();
 
 //==================================================================================================================
 //Information
@@ -19,9 +17,6 @@ If you want to save objects make your Object-Class Serializable
            //==================================================================================================================
            //Object Export
            //==================================================================================================================
-           public static void ObjectExport()
-           {
-
                String path = "image.png";
                ImageExport imageExport = new ImageExport(true);
 
@@ -58,13 +53,10 @@ If you want to save objects make your Object-Class Serializable
 
                //Output HighscoreElements
                System.out.println("HighScoreElements: " + newHighscoreElements);
-           }
 
            //==================================================================================================================
            //String Export
            //==================================================================================================================
-           public static void StringExport()
-           {
                String path = "image.png";
                ImageExport imageExport = new ImageExport(true);
 
@@ -85,20 +77,16 @@ If you want to save objects make your Object-Class Serializable
 
                //Output String
                System.out.println("String: " + newValue);
-           }
 
            //==================================================================================================================
            //File Export
            //==================================================================================================================
-           public static void FileExport()
-           {
                String path = "image.png";
                ImageExport imageExport = new ImageExport(true);
 
                imageExport.exportFile("Text.txt", path);
 
                imageExport.importFile("NewText.txt", path);
-           }
 
 //==================================================================================================================
 //Errors
@@ -108,9 +96,6 @@ If you want to save objects make your Object-Class Serializable
 
       import java.io.Serializable;
       public class YourClass implements Serializable
-
-
-2)
 
 //==================================================================================================================
 //Creator
