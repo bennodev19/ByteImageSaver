@@ -15,9 +15,9 @@ public class ImageExport
     ByteImageSaver byteImageSaver;
 
     /**
-     * Enable information ConsoleLog for example will it inform you if a images has been successfully exported
+     * Sets whether the class show you informational ConsoleLogs or not
      *
-     * @param showLog Sets whether the log should be shown or not
+     * @param showLog Sets whether the class show you informational ConsoleLogs or not
      */
     public void setShowLog(boolean showLog)
     {
@@ -74,7 +74,7 @@ public class ImageExport
     //==================================================================================================================
 
     /**
-     * Export Objects into a image which will contain the data of the Object
+     * Export Objects into a image
      * Note: Your Objects have to be Serializable(java.io.Serializable)
      *
      * @param objects   The object which you will export as an image
@@ -98,7 +98,7 @@ public class ImageExport
      * Note: Your Objects have to be Serializable(java.io.Serializable)
      *
      * @param imagePath The path where the image is located
-     * @return an ArrayList of Objects which has been read out of the image
+     * @return An ArrayList of Objects which has been read out of an image
      */
     public ArrayList<Object> importObject(String imagePath)
     {
@@ -119,7 +119,7 @@ public class ImageExport
     //==================================================================================================================
 
     /**
-     * Export a String into a image which will contain the data of the String
+     * Export a String into a image
      *
      * @param value     The string which you will export as an image
      * @param imagePath The path where the image should be saved
@@ -141,7 +141,7 @@ public class ImageExport
      * Import a String which has been read out of an image
      *
      * @param imagePath The path where the image is located
-     * @return a String which has been read out from the image
+     * @return A String which has been read out from the image
      */
     public String importString(String imagePath)
     {
@@ -161,7 +161,7 @@ public class ImageExport
     //==================================================================================================================
 
     /**
-     * Will export a File into a image which will contain the data of the File
+     * Export a File into a image
      *
      * @param filePath  The path where your file is located
      * @param imagePath The path where the image should be saved
@@ -194,7 +194,7 @@ public class ImageExport
     }
 
     /**
-     * Will create a File which has been read out of a image
+     * Create a File which has been read out of an image
      *
      * @param imagePath   The path where the image is located
      * @param newFilePath The path where the new file should be saved
