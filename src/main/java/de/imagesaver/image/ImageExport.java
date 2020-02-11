@@ -15,7 +15,7 @@ public class ImageExport
     ByteImageSaver byteImageSaver;
 
     /**
-     * You can enable the Log and with that you can see for example if the export has been ended and so on..
+     * Enable information ConsoleLog for example will it inform you if a images has been successfully exported
      *
      * @param showLog Sets whether the log should be shown or not
      */
@@ -29,7 +29,7 @@ public class ImageExport
     //==================================================================================================================
 
     /**
-     * You can export/import Strings/Objects/Files into images
+     * Export/Import Strings/Objects/Files into images
      *
      * @param allowCrypting Sets whether the image should be encrypted or not
      * @param color         Sets whether the image should be colorful or not (Note: The image without colors needs more space)
@@ -45,7 +45,7 @@ public class ImageExport
     }
 
     /**
-     * You can export/import Strings/Objects/Files into images
+     * Export/Import Strings/Objects/Files into images
      *
      * @param allowCrypting Sets whether the image should be encrypted or not (Note: The KEY is useless if you do not allow crypting)
      * @param KEY           A 16 byte StringKey which you have to define for encrypting your Data (Note: Only with that key you can decrypt your encrypted data)
@@ -59,7 +59,7 @@ public class ImageExport
     }
 
     /**
-     * You can export/import Strings/Objects/Files into images
+     * Export/Import Strings/Objects/Files into images
      *
      * @param color Sets whether the image should be colorful or not (Note: The image without colors needs more space)
      */
@@ -74,8 +74,8 @@ public class ImageExport
     //==================================================================================================================
 
     /**
-     * Will export a Object into a image which will contain the data of the Object
-     * Note: Your Object has to be Serializable(java.io.Serializable)
+     * Export Objects into a image which will contain the data of the Object
+     * Note: Your Objects have to be Serializable(java.io.Serializable)
      *
      * @param objects   The object which you will export as an image
      * @param imagePath The path where the image should be saved
@@ -94,11 +94,11 @@ public class ImageExport
     }
 
     /**
-     * Will import a Object which has been read out of a image
-     * Note: Your Object has to be Serializable(java.io.Serializable)
+     * Import Objects which has been read out of an image
+     * Note: Your Objects have to be Serializable(java.io.Serializable)
      *
      * @param imagePath The path where the image is located
-     * @return an Object that is read from the picture
+     * @return an ArrayList of Objects which has been read out of the image
      */
     public ArrayList<Object> importObject(String imagePath)
     {
@@ -119,7 +119,7 @@ public class ImageExport
     //==================================================================================================================
 
     /**
-     * Will export a String into a image which will contain the data of the String
+     * Export a String into a image which will contain the data of the String
      *
      * @param value     The string which you will export as an image
      * @param imagePath The path where the image should be saved
@@ -131,7 +131,6 @@ public class ImageExport
 
         //Crypting
         if (allowCrypting) byteArray = aes.encrypt(byteArray);
-        debugByteArray(byteArray);
 
         //Create ByteImage
         logString("Started writing image");
@@ -139,17 +138,16 @@ public class ImageExport
     }
 
     /**
-     * Will import a String which has been read out of a image
+     * Import a String which has been read out of an image
      *
      * @param imagePath The path where the image is located
-     * @return an String that is read from the picture
+     * @return a String which has been read out from the image
      */
     public String importString(String imagePath)
     {
         //ReadImage
         logString("Started reading image");
         byte[] byteArray = byteImageSaver.readImage(imagePath);
-        debugByteArray(byteArray);
 
         //Crypting
         if (allowCrypting) byteArray = aes.decrypt(byteArray);
@@ -165,7 +163,7 @@ public class ImageExport
     /**
      * Will export a File into a image which will contain the data of the File
      *
-     * @param filePath  The path where your file is located which you will export as an image
+     * @param filePath  The path where your file is located
      * @param imagePath The path where the image should be saved
      */
     public void exportFile(String filePath, String imagePath)
@@ -196,10 +194,10 @@ public class ImageExport
     }
 
     /**
-     * Will import a String which has been read out of a image
+     * Will create a File which has been read out of a image
      *
      * @param imagePath   The path where the image is located
-     * @param newFilePath The path where the decrypted file should be saved
+     * @param newFilePath The path where the new file should be saved
      */
     public void importFile(String newFilePath, String imagePath)
     {
@@ -231,20 +229,5 @@ public class ImageExport
         if (showLog)
             System.out.println(log);
     }
-
-    //TODO DELETE----------------------------------------------------------------------------------------------
-    private void debugByteArray(byte[] bytes)
-    {
-        String byteString = "";
-        String seperator = ", ";
-        for (Byte b : bytes)
-        {
-            byteString += b + seperator;
-        }
-        byteString = byteString.substring(0, byteString.length() - seperator.length());
-
-        System.out.println(byteString);
-    }
-    //TODO DELETE----------------------------------------------------------------------------------------------
 }
 

@@ -6,7 +6,7 @@
 
     <groupId>com.gitlab.bennodev</groupId>
     <artifactId>byteimagesaver</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <distributionManagement>
         <snapshotRepository>
@@ -25,6 +25,7 @@
 
     <!--Note-->
     <!--For setting the version"mvn versions:set -DnewVersion=1.0.0"-->
+    <!--For uploading: mvn clean deploy -p release-->
 
     <build>
         <plugins>
